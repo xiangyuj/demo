@@ -1,0 +1,37 @@
+---
+title: "Week4Excercise"
+author: "Xiangyu Jiang"
+date: "September 28, 2015"
+output: 
+html_document:
+keep_md: true
+---
+
+# Introduction
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Statatis Analysis for data car
+```{r, cache=TRUE}
+summary(cars)
+```
+
+## Plot
+You can also embed plots, for example:
+
+```{r, echo=TRUE, fig.align='center',fig.width=10,fig.height=7}
+plot(cars)
+```
+
+## Histogram
+```{r}
+h <- hist(cars$speed,xlab="speed",ylab="frequency",main="Histogram of Speed",ylim=c(0,20))
+xfit <- seq(min(cars$speed),max(cars$speed),length=50)
+yfit <- dnorm(xfit, mean=mean(cars$speed),sd=sd(cars$speed))
+yfit <- yfit*diff(h$mids[1:2])*length(cars$speed)
+lines(xfit, yfit, col="blue",lwd=2)
+hist(cars$dist,xlab="distance",ylab="frequency",main="Histogram of Distance")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
